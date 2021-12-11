@@ -5,11 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from routes import (
-    customer_route,
-    rental_route,
-    vehicle_route
-)
+from routes import customer_route, rental_route, vehicle_route
 
 # METADATA TAGS FOR SWAGGER AND DOCS
 tags_metadata = [
@@ -24,15 +20,13 @@ tags_metadata = [
     {
         "name": "vehicle inventory",
         "description": "Contains all API's related to vehicle inventory",
-    }
+    },
 ]
 
 # DESCRIPTION OF APP
-app_description = (
-    """
+app_description = """
         Consists of **VEHICLE RENTAL APIs** which performs **server-side** operations.
     """
-)
 
 # CREATE FASTAPI APP
 app = FastAPI(
@@ -44,12 +38,12 @@ app = FastAPI(
     contact={
         "name": "Gokulakrishnan A",
         "url": "https://gokulakrishnan.netlify.app/",
-        "email": "www.krishnan.arulsigamani@gmail.com"
+        "email": "www.krishnan.arulsigamani@gmail.com",
     },
     license_info={
         "name": "FastAPI",
         "url": "https://fastapi.tiangolo.com/",
-    }
+    },
 )
 
 # APPLY MIDDLEWARE
@@ -66,24 +60,32 @@ app.add_middleware(
 async def startup_event():
     create_db_engine()
 
+
 # MIDDLEWARE OPERATIONS
 @app.middleware("http")
 async def set_global_session(request: Request, call_next):
     create_db_session()
-    response = await call_next(request)     
+    response = await call_next(request)
     return response
+
 
 # CUSTOM VALIDATION ERROR RESPONSE
 @app.exception_handler(RequestValidationError)
 async def validation_exception_handler(request: Request, exc: RequestValidationError):
-    errors=[
-        {"name":err["loc"][1],"location":err["loc"][0],"detail":err["msg"],"type":err["type"]}
+    errors = [
+        {
+            "name": err["loc"][1],
+            "location": err["loc"][0],
+            "detail": err["msg"],
+            "type": err["type"],
+        }
         for err in exc.errors()
     ]
     return JSONResponse(
         status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
         content=jsonable_encoder({"validation_error": errors}),
     )
+
 
 # INCLUDE ROUTERS
 app.include_router(customer_route.customer_api)

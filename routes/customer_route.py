@@ -7,12 +7,15 @@ from response.response import get_response
 from request.customer_model import add_customer_model
 from router import customer_api
 
+
 @customer_api.get("/")
 def get_customer(
-    customerids: List[int] = Query(None, description="Enter the ids of customer",gt=0),
+    customerids: List[int] = Query(None, description="Enter the ids of customer", gt=0),
     customernames: List[str] = Query(None, description="Enter the names of customer"),
-    phonenumbers: List[str] = Query(None, description="Enter the phone numbers of customer"),
-    emails: List[EmailStr] = Query(None, description="Enter the email ids of customer")
+    phonenumbers: List[str] = Query(
+        None, description="Enter the phone numbers of customer"
+    ),
+    emails: List[EmailStr] = Query(None, description="Enter the email ids of customer"),
 ):
     try:
         session = get_session()
@@ -33,10 +36,9 @@ def get_customer(
         print("get_customer exception : ", e)
         return get_response("CUSTOMER_ERR001", None, 409)
 
+
 @customer_api.post("/")
-def add_customer(
-    customer_details: add_customer_model
-):
+def add_customer(customer_details: add_customer_model):
     try:
         session = get_session()
         add_customer_details = Customer(**customer_details.dict())
