@@ -1,0 +1,21 @@
+{
+    "responseCodeData": {
+        "succCode": {
+            "CUSTOMER_RES001": "Customer details fetched successfully",
+            "CUSTOMER_RES002": "Customer details added successfully",
+            "RENTAL_RES001": "Rental booking details fetched successfully",
+            "RENTAL_RES002": "Rental booking details added successfully",
+            "VEHICLE_RES001": "Vehicle inventory fetched successfully"
+        },
+        "errCode": {
+            "CUSTOMER_ERR001": "Error in fetching customer details",
+            "CUSTOMER_ERR002": "Error in adding customer details",
+            "CUSTOMER_ERR003": "No data found in customer details",
+            "RENTAL_ERR001": "Error in fetching rental booking details",
+            "RENTAL_ERR002": "Error in adding rental booking details",
+            "RENTAL_ERR003": "No data found in rental booking details",
+            "VEHICLE_ERR001": "Error in fetching vehicle inventory",
+            "VEHICLE_ERR002": "No data found in vehicle inventory"
+        }
+    }
+}
