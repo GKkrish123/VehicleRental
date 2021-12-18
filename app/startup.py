@@ -24,11 +24,13 @@ tags_metadata = [
     {
         "name": "mock database",
         "description": "Contains all API's related to mock database",
-    }
+    },
 ]
 
 # DESCRIPTION OF APP
-app_description = "Consists of **VEHICLE RENTAL APIs** which performs **server-side** operations."
+app_description = (
+    "Consists of **VEHICLE RENTAL APIs** which performs **server-side** operations."
+)
 
 # CREATE FASTAPI APP
 app = FastAPI(

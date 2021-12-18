@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
 SQL_DB_SYSTEM = os.getenv("SQL_DB_SYSTEM")

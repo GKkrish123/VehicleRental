@@ -1,6 +1,13 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from ..config import SQL_DB_SYSTEM, DB_USERNAME, DB_PASSWORD, DB_SERVER, DB_HOST, DB_PORT
+from ..config import (
+    SQL_DB_SYSTEM,
+    DB_USERNAME,
+    DB_PASSWORD,
+    DB_SERVER,
+    DB_HOST,
+    DB_PORT,
+)
 
 DB_URL = (
     f"{SQL_DB_SYSTEM}://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_SERVER}"

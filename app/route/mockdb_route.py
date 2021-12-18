@@ -3,6 +3,7 @@ from ..database import get_session
 from ..response import get_response
 from . import mockdb_api
 
+
 @mockdb_api.post("/")
 def create_mock_db_tables():
     try:
@@ -12,6 +13,7 @@ def create_mock_db_tables():
     except Exception as e:
         print("create_mock_db_tables exception : ", e)
         return get_response("MOCK_ERR001", None, 409)
+
 
 @mockdb_api.delete("/")
 def delete_mock_db_tables():
