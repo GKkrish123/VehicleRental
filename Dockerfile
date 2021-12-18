@@ -6,7 +6,7 @@ ENV PORT=5000
 EXPOSE 5000
 
 # POINT STARTUP ENV
-ENV MODULE_NAME startup
+ENV MODULE_NAME app.startup
 
 # INSTALL REQUIREMENTS
 COPY ./requirements.txt /vehiclerental/requirements.txt

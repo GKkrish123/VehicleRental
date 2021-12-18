@@ -9,6 +9,7 @@ psycopg2 = "*"
 uvicorn = "*"
 fastapi = "*"
 pydantic = {extras = ["email"], version = "*"}
+python-dotenv = "*"
 
 [dev-packages]
 

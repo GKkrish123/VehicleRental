@@ -1,7 +1,5 @@
-from pydantic import BaseModel, Field, validator
-from pydantic.networks import EmailStr
-from database.db_conn import get_session
-from database.customer import Customer
+from pydantic import BaseModel, Field, validator, EmailStr
+from ..database import get_session, Customer
 import re
 
 

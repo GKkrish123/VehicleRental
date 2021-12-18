@@ -1,9 +1,8 @@
-from typing import List
 from fastapi import Query
-from database.db_conn import get_session
-from database.vehicle import Vehicle
-from response.response import get_response
-from router import vehicle_api
+from typing import List
+from ..database import get_session, Vehicle
+from ..response import get_response
+from . import vehicle_api
 
 
 @vehicle_api.get("/")

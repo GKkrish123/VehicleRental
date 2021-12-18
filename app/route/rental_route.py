@@ -1,11 +1,9 @@
-from typing import List
-from database.vehicle import Vehicle
 from fastapi import Query
-from database.db_conn import get_session
-from database.rental import Rentalbooking
-from response.response import get_response
-from request.rental_model import add_rental_booking_model
-from router import rental_api
+from typing import List
+from ..database import get_session, Vehicle, Rentalbooking
+from ..response import get_response
+from ..request import add_rental_booking_model
+from . import rental_api
 
 
 @rental_api.get("/")

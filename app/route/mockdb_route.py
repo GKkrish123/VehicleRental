@@ -1,7 +1,7 @@
-from database.db_conn import get_session
 from mock_db_tables import create_mock_tables, delete_mock_tables
-from response.response import get_response
-from router import mockdb_api
+from ..database import get_session
+from ..response import get_response
+from . import mockdb_api
 
 @mockdb_api.post("/")
 def create_mock_db_tables():

@@ -1,11 +1,10 @@
 from typing import List
 from fastapi import Query
-from pydantic.networks import EmailStr
-from database.db_conn import get_session
-from database.customer import Customer
-from response.response import get_response
-from request.customer_model import add_customer_model
-from router import customer_api
+from pydantic import EmailStr
+from ..database import get_session, Customer
+from ..response import get_response
+from ..request import add_customer_model
+from . import customer_api
 
 
 @customer_api.get("/")

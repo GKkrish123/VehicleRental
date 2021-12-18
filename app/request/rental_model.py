@@ -1,9 +1,7 @@
 from pydantic import BaseModel, Field, validator
 from typing import Optional
 from datetime import date, datetime
-from database.db_conn import get_session
-from database.customer import Customer
-from database.vehicle import Vehicle
+from ..database import get_session, Customer, Vehicle
 
 
 class add_rental_booking_model(BaseModel):

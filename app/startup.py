@@ -1,11 +1,11 @@
-from database.db_conn import create_db_engine, create_db_session
 import uvicorn
 from fastapi import FastAPI, Request, status
 from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from routes import customer_route, rental_route, vehicle_route, mockdb_route
+from .route import customer_route, rental_route, vehicle_route, mockdb_route
+from .database import create_db_engine, create_db_session
 
 # METADATA TAGS FOR SWAGGER AND DOCS
 tags_metadata = [
@@ -28,9 +28,7 @@ tags_metadata = [
 ]
 
 # DESCRIPTION OF APP
-app_description = """
-        Consists of **VEHICLE RENTAL APIs** which performs **server-side** operations.
-    """
+app_description = "Consists of **VEHICLE RENTAL APIs** which performs **server-side** operations."
 
 # CREATE FASTAPI APP
 app = FastAPI(
