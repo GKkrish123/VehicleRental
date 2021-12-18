@@ -34,6 +34,8 @@ def get_rental_booking(
     except Exception as e:
         print("get_rental_booking exception : ", e)
         return get_response("RENTAL_ERR001", None, 409)
+    finally:
+        session.close()
 
 
 @rental_api.post("/")
@@ -53,4 +55,7 @@ def add_rental_booking(rental_booking_details: add_rental_booking_model):
         return get_response("RENTAL_RES002", add_rental_booking_details, 200)
     except Exception as e:
         print("add_rental_booking exception : ", e)
+        session.rollback()
         return get_response("RENTAL_ERR002", None, 409)
+    finally:
+        session.close()

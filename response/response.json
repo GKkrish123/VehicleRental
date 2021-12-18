@@ -5,7 +5,9 @@
             "CUSTOMER_RES002": "Customer details added successfully",
             "RENTAL_RES001": "Rental booking details fetched successfully",
             "RENTAL_RES002": "Rental booking details added successfully",
-            "VEHICLE_RES001": "Vehicle inventory fetched successfully"
+            "VEHICLE_RES001": "Vehicle inventory fetched successfully",
+            "MOCK_RES001": "Mock database tables added successfully",
+            "MOCK_RES002": "Mock database tables deleted successfully"
         },
         "errCode": {
             "CUSTOMER_ERR001": "Error in fetching customer details",
@@ -15,7 +17,9 @@
             "RENTAL_ERR002": "Error in adding rental booking details",
             "RENTAL_ERR003": "No data found in rental booking details",
             "VEHICLE_ERR001": "Error in fetching vehicle inventory",
-            "VEHICLE_ERR002": "No data found in vehicle inventory"
+            "VEHICLE_ERR002": "No data found in vehicle inventory",
+            "MOCK_ERR001": "Error in adding mock database tables",
+            "MOCK_ERR002": "Error in deleting mock database tables"
         }
     }
 }

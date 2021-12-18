@@ -24,3 +24,5 @@ def get_vehicle_inventory(
     except Exception as e:
         print("get_vehicle_inventory exception : ", e)
         return get_response("VEHICLE_ERR001", None, 409)
+    finally:
+        session.close()

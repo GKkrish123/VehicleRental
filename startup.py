@@ -5,7 +5,7 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.middleware.cors import CORSMiddleware
-from routes import customer_route, rental_route, vehicle_route
+from routes import customer_route, rental_route, vehicle_route, mockdb_route
 
 # METADATA TAGS FOR SWAGGER AND DOCS
 tags_metadata = [
@@ -21,6 +21,10 @@ tags_metadata = [
         "name": "vehicle inventory",
         "description": "Contains all API's related to vehicle inventory",
     },
+    {
+        "name": "mock database",
+        "description": "Contains all API's related to mock database",
+    }
 ]
 
 # DESCRIPTION OF APP
@@ -91,6 +95,7 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
 app.include_router(customer_route.customer_api)
 app.include_router(rental_route.rental_api)
 app.include_router(vehicle_route.vehicle_api)
+app.include_router(mockdb_route.mockdb_api)
 
 # APP START
 if __name__ == "__main__":
