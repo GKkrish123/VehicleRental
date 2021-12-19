@@ -1,1 +1,4 @@
 from .customer_controller import get_customer_controller, add_customer_controller
+from .mockdb_controller import create_mock_db_tables_controller, delete_mock_db_tables_controller
+from .rental_controller import add_rental_booking_controller, get_rental_booking_controller
+from .vehicle_controller import get_vehicle_inventory_controller

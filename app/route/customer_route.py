@@ -11,9 +11,7 @@ from . import customer_api
 def get_customer(
     customerids: List[int] = Query(None, description="Enter the ids of customer", gt=0),
     customernames: List[str] = Query(None, description="Enter the names of customer"),
-    phonenumbers: List[str] = Query(
-        None, description="Enter the phone numbers of customer"
-    ),
+    phonenumbers: List[str] = Query(None, description="Enter the phone numbers of customer"),
     emails: List[EmailStr] = Query(None, description="Enter the email ids of customer"),
 ):
     try:
