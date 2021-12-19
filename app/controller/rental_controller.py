@@ -23,8 +23,10 @@ def add_rental_booking_controller(rental_booking_details):
         vehicle_filters = [
             Vehicle.vehicletype == rental_booking_details["vehicletype"]
         ]
-        vehicle_inventory = Vehicle().fetch(vehicle_filters).first()
-        vehicle_inventory.inventory -= 1
+        vehicle_update = {
+            "inventory": Vehicle.inventory - 1
+        }
+        Vehicle().edit(vehicle_filters, vehicle_update, session_close=False)
         add_rental_booking_details = Rentalbooking().add(rental_booking_details)
         return get_response("RENTAL_RES002", add_rental_booking_details, 200)
     except Exception:

@@ -1,7 +1,7 @@
 from pydantic import BaseModel, Field, validator
 from typing import Optional
 from datetime import date, datetime
-from ..database import get_session, Customer, Vehicle
+from ..database import Customer, Vehicle
 
 
 class add_rental_booking_model(BaseModel):
@@ -19,8 +19,10 @@ class add_rental_booking_model(BaseModel):
     @validator("customername")
     def should_be_valid_customer(cls, v):
         try:
-            session = get_session()
-            data = session.query(Customer).filter(Customer.customername == v).first()
+            customer_filter = [
+                Customer.customername == v
+            ]
+            data = Customer().fetch(customer_filter).first()
             if data == None:
                 raise ValueError("Please add customer details for rental booking")
         except ValueError as e:
@@ -38,8 +40,10 @@ class add_rental_booking_model(BaseModel):
     @validator("vehicletype")
     def should_be_valid_vehicletype(cls, v):
         try:
-            session = get_session()
-            data = session.query(Vehicle).filter(Vehicle.vehicletype == v).first()
+            vehicle_filter = [
+                Vehicle.vehicletype == v
+            ]
+            data = Vehicle().fetch(vehicle_filter).first()
             if data == None:
                 raise ValueError(
                     f"Currently, {v} is not available in our inventory. Please checkout the vehicle availability"

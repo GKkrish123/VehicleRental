@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field, validator, EmailStr
-from ..database import get_session, Customer
+from ..database import Customer
 import re
 
 
@@ -17,8 +17,10 @@ class add_customer_model(BaseModel):
     @validator("email")
     def should_be_valid_email(cls, v):
         try:
-            session = get_session()
-            data = session.query(Customer).filter(Customer.email == v).first()
+            customer_filter = [
+                Customer.email == v
+            ]
+            data = Customer().fetch(customer_filter).first()
             if data == None:
                 return v
             raise ValueError("This email is already registered with another customer")
@@ -30,8 +32,10 @@ class add_customer_model(BaseModel):
         try:
             if not re.fullmatch("(0|91)?[7-9][0-9]{9}", v):
                 raise ValueError("value is not a valid phone number")
-            session = get_session()
-            data = session.query(Customer).filter(Customer.phonenumber == v).first()
+            customer_filter = [
+                Customer.phonenumber == v
+            ]
+            data = Customer().fetch(customer_filter).first()
             if data == None:
                 return v
             raise ValueError(
